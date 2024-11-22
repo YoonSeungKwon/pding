@@ -3,6 +3,8 @@ package yoon.capstone.pding.user.service.domain;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import yoon.capstone.pding.friend.service.domain.Friend;
+import yoon.capstone.pding.friend.service.domain.FriendRequestable;
 
 @Builder
 public class User implements UserUpdatable{
@@ -43,6 +45,10 @@ public class User implements UserUpdatable{
                 .nickName(this.nickName)
                 .profile(profile)
                 .build();
+    }
+
+    public FriendRequestable requestFriend(User user){
+        return new Friend(this, user, false);
     }
 
 }

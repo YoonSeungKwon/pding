@@ -1,8 +1,7 @@
-package yoon.capstone.pding.user.infrastructure.repository;
+package yoon.capstone.pding.user.infrastructure;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import yoon.capstone.pding.user.infrastructure.UserJpaEntity;
 import yoon.capstone.pding.user.service.UserRepository;
 
 @Repository

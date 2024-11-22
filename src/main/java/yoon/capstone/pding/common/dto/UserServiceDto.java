@@ -3,9 +3,8 @@ package yoon.capstone.pding.common.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
-public class UserServiceDto implements UserDto{
+public class UserServiceDto{
 
     public final String email;
 

@@ -1,37 +1,33 @@
 package yoon.capstone.pding.friend.service.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import yoon.capstone.pding.user.service.domain.User;
 
 import java.util.List;
 
 @Builder
-public class Friend implements  FriendFindable, FriendAcceptable{
+@Getter
+@AllArgsConstructor
+public class Friend implements FriendAcceptable, FriendRequestable{
 
-    public final User requester;
+    private User requester;
 
-    public final User receiver;
+    private User receiver;
 
-    public final boolean isFriend;
+    private boolean isFriend;
 
     @Override
     public FriendAcceptable acceptFriend() {
-        return null;
+        this.isFriend = true;
+        return this;
     }
 
     @Override
     public FriendAcceptable rejectFriend() {
-        return null;
-    }
-
-    @Override
-    public FriendFindable findFriend() {
-        return null;
-    }
-
-    @Override
-    public List<FriendFindable> findAllFriends() {
-        return null;
+        this.isFriend = false;
+        return this;
     }
 
 }

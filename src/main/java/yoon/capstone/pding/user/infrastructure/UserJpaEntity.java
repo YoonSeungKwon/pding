@@ -7,9 +7,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import yoon.capstone.pding.friend.infrastructure.FriendJpaEntity;
 import yoon.capstone.pding.user.service.domain.User;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Data
@@ -38,12 +40,12 @@ public class UserJpaEntity {
     private LocalDateTime updatedAt;
 
 
-    public User toModel(UserJpaEntity userJpaEntity){
+    public User toModel(){
         return User.builder()
-                .email(userJpaEntity.getEmail())
-                .password(userJpaEntity.getPassword())
-                .nickName(userJpaEntity.getNickName())
-                .profile(userJpaEntity.getProfile())
+                .email(this.getEmail())
+                .password(this.getPassword())
+                .nickName(this.getNickName())
+                .profile(this.getProfile())
                 .build();
     }
 
@@ -54,6 +56,19 @@ public class UserJpaEntity {
                 .nickName(user.nickName)
                 .profile(user.profile)
                 .build();
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(this.userId);
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserJpaEntity that = (UserJpaEntity) o;
+        return Objects.equals(userId, that.userId);
     }
 
 }
